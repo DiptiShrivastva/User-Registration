@@ -1,4 +1,4 @@
-name: CI Pipeline (Cross-Platform)
+name: CI Pipeline (macOS)
 
 on:
   push:
@@ -7,11 +7,7 @@ on:
 
 jobs:
   test:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]  # Run on Linux, Windows, macOS
-        browser: [chrome, firefox]  # Test both browsers
-    runs-on: ${{ matrix.os }}
+    runs-on: macos-latest  # Use macOS as the runner
 
     steps:
       - name: Checkout Repository
@@ -20,38 +16,23 @@ jobs:
       - name: Set Up JDK 11
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
+          distribution: 'temurin'  # Use Eclipse Temurin JDK
           java-version: '11'
           cache: 'maven'
-
-      # Install dependencies and web drivers for macOS & Linux
-      - name: Install WebDriver (macOS & Linux)
-        if: runner.os != 'Windows'
-        run: |
-          sudo apt-get update || brew update
-          sudo apt-get install -y google-chrome firefox || brew install --cask google-chrome firefox
-          sudo apt-get install -y chromedriver geckodriver || brew install chromedriver geckodriver
-          google-chrome --version || echo "Chrome installed"
-          firefox --version || echo "Firefox installed"
-
-      # Install dependencies and web drivers for Windows
-      - name: Install WebDriver (Windows)
-        if: runner.os == 'Windows'
-        run: |
-          choco install googlechrome firefox -y
-          choco install chromedriver geckodriver -y
 
       - name: Cache Maven Dependencies
         uses: actions/cache@v3
         with:
-          path: |
-            ~/.m2/repository  # Linux & macOS path
-            C:\Users\runneradmin\.m2\repository  # Windows path
+          path: ~/.m2/repository
           key: maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: maven-
 
-      - name: Run Tests in ${{ matrix.browser }}
-        env:
-          BROWSER: ${{ matrix.browser }}  # Pass browser as env variable
-          CI: true  # Enable headless mode in DriverSetup.java
-        run: mvn clean test -Dbrowser=${{ matrix.browser }}
+      - name: Install WebDriver
+        run: |
+          brew install --cask google-chrome
+          brew install --cask firefox
+          brew install chromedriver
+          brew install geckodriver  # For Firefox
+
+      - name: Run Tests with Maven
+        run: mvn clean test
