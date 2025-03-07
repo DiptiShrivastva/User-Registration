@@ -1,6 +1,5 @@
 package stepDefinitions;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -9,7 +8,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-import utils.DriverSetup;
+
 
 public class RegistrationSteps {
 
@@ -158,6 +157,10 @@ public class RegistrationSteps {
 
     @Then("I should see a terms and conditions error")
     public void i_should_see_a_terms_and_conditions_error() {
+        verifyTermsAndConditionsError();
+    }
+//private method that uses explicit wait
+    private void verifyTermsAndConditionsError() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.cssSelector("#signup_form > div:nth-child(12) > div > div:nth-child(2) > div:nth-child(1) > span > span")
@@ -172,7 +175,6 @@ public class RegistrationSteps {
                 "You must confirm that you have read and accepted our Terms and Conditions",
                 actualErrorMessage);
     }
-
 
 
 }
