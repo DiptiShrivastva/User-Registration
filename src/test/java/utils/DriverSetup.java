@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
+//For running tests in headless mode for gitHub Actions
 public class DriverSetup {
     private static WebDriver driver;
 
@@ -45,12 +45,13 @@ public class DriverSetup {
 }
 
 /*
-package utils;
 
+package utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+// for running code in headed mode
 public class DriverSetup {
     private static WebDriver driver;
 

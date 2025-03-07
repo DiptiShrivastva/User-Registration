@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52eeb2cc-92b9-4edc-9761-128d3a9b9c59" name="Changes" comment="" />
+    <list default="true" id="52eeb2cc-92b9-4edc-9761-128d3a9b9c59" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepDefinitions/RegistrationSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepDefinitions/RegistrationSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utils/DriverSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/DriverSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/UserRegistration.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/UserRegistration.feature" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +25,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/README.md" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

@@ -54,12 +54,14 @@ public class RegistrationSteps {
                     By.cssSelector("body > div > div.page-content-wrapper > div > h2")
             ));
             actualMessage = successMessage.getText();
+            //when new user is getting registered
         } catch (TimeoutException e1) {
             try {
                 WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
                         By.cssSelector("#titleText1")
                 ));
                 actualMessage = errorMessage.getText();
+                //when user account already exists
             } catch (TimeoutException e2) {
                 Assert.fail("Neither expected message was found!");
             }
@@ -74,6 +76,7 @@ public class RegistrationSteps {
     @When("I fill in the registration form without last name {string}, {string}, {string}, {string}, and {string}")
     public void i_fill_in_the_registration_form_without_last_name(String firstName, String lastName, String email, String password, String confirmPassword) {
         driver.findElement(By.id("member_firstname")).sendKeys(firstName);
+        driver.findElement(By.id("member_lastname")).sendKeys(lastName);
         driver.findElement(By.id("member_emailaddress")).sendKeys(email);
         driver.findElement(By.id("member_confirmemailaddress")).sendKeys(email);
         driver.findElement(By.id("signupunlicenced_password")).sendKeys(password);
@@ -109,6 +112,7 @@ public class RegistrationSteps {
     @When("I fill in the registration form with mismatched password {string}, {string}, {string}, {string}, and {string}")
     public void i_fill_in_the_registration_form_with_mismatched_password(String firstName, String lastName, String email, String password, String confirmPassword) {
         driver.findElement(By.id("member_firstname")).sendKeys(firstName);
+        driver.findElement(By.id("member_lastname")).sendKeys(lastName);
         driver.findElement(By.id("member_emailaddress")).sendKeys(email);
         driver.findElement(By.id("member_confirmemailaddress")).sendKeys(email);
         driver.findElement(By.id("signupunlicenced_password")).sendKeys(password);
@@ -138,6 +142,7 @@ public class RegistrationSteps {
     @When("I fill without term and condition {string}, {string}, {string}, {string}, and {string}")
     public void i_fill_in_the_registration_form_without_accepting_terms(String firstName, String lastName, String email, String password, String confirmPassword) {
         driver.findElement(By.id("member_firstname")).sendKeys(firstName);
+        driver.findElement(By.id("member_lastname")).sendKeys(lastName);
         driver.findElement(By.id("member_emailaddress")).sendKeys(email);
         driver.findElement(By.id("member_confirmemailaddress")).sendKeys(email);
         driver.findElement(By.id("signupunlicenced_password")).sendKeys(password);
