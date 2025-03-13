@@ -44,14 +44,15 @@ public class DriverSetup {
     }
 }
 
-/*
 
+/*
+ //for running code in headed mode
 package utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-// for running code in headed mode
+
 public class DriverSetup {
     private static WebDriver driver;
 
@@ -62,12 +63,12 @@ public class DriverSetup {
 
             switch (browser) {
                 case "firefox":
-                    System.setProperty("web-driver.gecko.driver", "/Users/Users/prashantshrivastava/Desktop/Dipti/GitLearning/User Registration/src/test/java/utils/geckodriver");
+                    System.setProperty("web-driver.gecko.driver", "/Users/Users/xyz/Desktop/xyz/GitLearning/User Registration/src/test/java/utils/geckodriver");
                     driver = new FirefoxDriver();
                     break;
                 case "chrome":
                 default:
-                    System.setProperty("web-driver.chrome.driver", "/Users/prashantshrivastava/Desktop/Dipti/GitLearning/User Registration/src/test/java/utils/chromedriver");
+                    System.setProperty("web-driver.chrome.driver", "/Users/xyz/Desktop/xyz/GitLearning/User Registration/src/test/java/utils/chromedriver");
                     driver = new ChromeDriver();
                     break;
             }
@@ -77,4 +78,9 @@ public class DriverSetup {
     }
 }
 
+
  */
+
+
+
+

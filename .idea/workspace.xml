@@ -7,6 +7,8 @@
     <list default="true" id="52eeb2cc-92b9-4edc-9761-128d3a9b9c59" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/stepDefinitions/RegistrationSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepDefinitions/RegistrationSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utils/DriverSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/utils/DriverSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/UserRegistration.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/UserRegistration.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

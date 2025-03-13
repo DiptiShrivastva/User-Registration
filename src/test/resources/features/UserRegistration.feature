@@ -27,12 +27,11 @@ Feature: User Registration on Basketball England
     Examples:
       | firstName | lastName | email                | password  | confirmPassword |
       | Alice     | Brown    | alice@example.com    | Test@1234 | Test@1234       |
-  Scenario Outline: Create user registration with account is created
+  Scenario Outline: Create user registration with account creation
     Given I am on the registration page
     When I fill in the registration form with "<firstName>", "<lastName>", "<email>", "<password>", and "<confirmPassword>"
-    Then I should see either "<expectedOutcome1>" or "<expectedOutcome2>"
+    Then I should see "<expectedOutcome>"
 
     Examples:
-      | firstName | lastName  | email               | password  | confirmPassword | expectedOutcome1                                            | expectedOutcome2 |
-      | Dipti     | Shrivastava | grepy08@gmail.com  | Test@1234 | Test@1234       | THANK YOU FOR CREATING AN ACCOUNT WITH BASKETBALL ENGLAND | CREATE AN ACCOUNT |
-# In the {Scenario Outline: Create user registration with account is created} test with new email for registration
+      | firstName | lastName  | email               | password  | confirmPassword | expectedOutcome                                              |
+      | Dipti     | Shrivastava | grepy08@gmail.com  | Test@1234 | Test@1234       | THANK YOU FOR CREATING AN ACCOUNT WITH BASKETBALL ENGLAND |

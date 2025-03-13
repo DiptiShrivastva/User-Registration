@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 
+
 public class RegistrationSteps {
 
     WebDriver driver;
@@ -26,49 +27,37 @@ public class RegistrationSteps {
     //  Scenario 4: Successful Registration
     @When("I fill in the registration form with {string}, {string}, {string}, {string}, and {string}")
     public void fill_registration_form(String firstName, String lastName, String email, String password, String confirmPassword) {
+        // Auto-generate unique email using timestamp
+        String uniqueEmail = email.replace("@",  System.currentTimeMillis() + "@");
+
         driver.findElement(By.id("member_firstname")).sendKeys(firstName);
         driver.findElement(By.id("member_lastname")).sendKeys(lastName);
-        driver.findElement(By.id("member_emailaddress")).sendKeys(email);
-        driver.findElement(By.id("member_confirmemailaddress")).sendKeys(email);
+        driver.findElement(By.id("member_emailaddress")).sendKeys(uniqueEmail);//uniqueEmail
+        driver.findElement(By.id("member_confirmemailaddress")).sendKeys(uniqueEmail);//uniqueEmail
         driver.findElement(By.id("signupunlicenced_password")).sendKeys(password);
         driver.findElement(By.id("signupunlicenced_confirmpassword")).sendKeys(confirmPassword);
         driver.findElement(By.id("dp")).sendKeys("01/03/1984");
 
-        // Accept terms & conditions
+        // Accept terms & conditions and policies
         driver.findElement(By.cssSelector("#signup_form > div:nth-child(12) > div > div:nth-child(2) > div:nth-child(1) > label")).click();
-        //AgeAccept
         driver.findElement(By.cssSelector("#signup_form > div:nth-child(12) > div > div:nth-child(2) > div.md-checkbox.margin-top-10 > label")).click();
-        //Basketball England Code of Ethics and Conduct
         driver.findElement(By.cssSelector("#signup_form > div:nth-child(12) > div > div:nth-child(7) > label")).click();
+
+        // Submit form
         driver.findElement(By.cssSelector("input[value='CONFIRM AND JOIN']")).click();
     }
 
-    @Then("I should see either {string} or {string}")
-    public void i_should_see_either(String expectedOutcome1, String expectedOutcome2) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-        String actualMessage = "";
+    @Then("I should see {string}")
+    public void i_should_see(String expectedOutcome) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.cssSelector("body > div > div.page-content-wrapper > div > h2")
+        ));
 
-        try {
-            WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.cssSelector("body > div > div.page-content-wrapper > div > h2")
-            ));
-            actualMessage = successMessage.getText();
-            //when new user is getting registered
-        } catch (TimeoutException e1) {
-            try {
-                WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                        By.cssSelector("#titleText1")
-                ));
-                actualMessage = errorMessage.getText();
-                //when user account already exists
-            } catch (TimeoutException e2) {
-                Assert.fail("Neither expected message was found!");
-            }
-        }
-
+        String actualMessage = messageElement.getText();
         System.out.println("Actual message: " + actualMessage);
-        Assert.assertTrue("Expected: " + expectedOutcome1 + " or " + expectedOutcome2 + " but found: " + actualMessage,
-                actualMessage.contains(expectedOutcome1) || actualMessage.contains(expectedOutcome2));
+
+        Assert.assertEquals("Expected success message did not match!", expectedOutcome, actualMessage);
     }
 
     //  Scenario 1: Missing Last Name
